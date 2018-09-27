@@ -23,8 +23,7 @@ public class CanvasRestController {
         Gson gson=new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         return gson.toJson(object);
     }
-//USA ESTE METODO CON UN POST DE POSTMAN PARA SURTIR EL REPOSITORIO CON LA IMAGEN BASE
-    //A PARTIR DE ALLI SI PUEDES PROBAR HACER TUS SOLICITUDES SIN QUE TE ARROJE UN ERROR
+
     @PostMapping(value = "/canvas", produces = "application/json;charset=UTF-8")
     public void generatePlaceHolder() throws InvalidParamException {
 
@@ -39,7 +38,7 @@ public class CanvasRestController {
         return toJson(canvas);
 
     }
-//COMENTA ESTE METODO PUES ESTA HECHO PARA PROBAR MIS FUNCIONES EN WEB. PUEDE LIARTE TUS SOLICITUDES ANDROID
+
     @GetMapping(value = "/canvas/user", produces = "application/json;charset=UTF-8")
     public String getRandomCanvas() throws NotFoundException, InvalidParamException {
 
@@ -47,7 +46,7 @@ public class CanvasRestController {
 
         return toJson(canvasDTO);
     }
-    //COMENTA ESTE METODO PUES ESTA HECHO PARA PROBAR MIS FUNCIONES EN WEB. PUEDE LIARTE TUS SOLICITUDES ANDROID
+
     @PutMapping(value = "/canvas/user", produces = "application/json;charset=UTF-8")
     public String pushUserCanvas(@RequestBody String jCanvas) throws InvalidParamException {
 

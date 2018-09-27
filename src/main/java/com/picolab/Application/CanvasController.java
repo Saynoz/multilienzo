@@ -22,15 +22,9 @@ public class CanvasController {
     @Autowired
     BlankCanvasRepository blankCanvasRepository;
 
-    public CanvasDTO createCanvas(CanvasDTO canvasDTO) throws InvalidParamException {
-        Canvas canvas = new Canvas(canvasDTO.getUrl());
-        canvasRepository.save(canvas);
-        return new CanvasDTO(canvas);
-    }
-
     public void createPlaceHolder() throws InvalidParamException {
         for (int i = 1; i < 51; i++) {
-            String url = ("files.000webhost.com/images" + i);
+            String url = ("https://myappoesyes.000webhostapp.com/imagen1/" + i + ".jpg");
             Canvas canvas = new Canvas(url);
             canvasRepository.save(canvas);
             blankCanvasRepository.save(canvas);
@@ -49,7 +43,7 @@ public class CanvasController {
     public synchronized CanvasDTO getRandomCanvas() throws NotFoundException, InvalidParamException {
         List<Canvas> blankCanvasList = blankCanvasRepository.getAllCanvas();
         if (blankCanvasList.size() <= 0)
-            throw new NotFoundException();
+            blankCanvasList.addAll(canvasRepository.getAllCanvas());
         int index = new Random().nextInt(blankCanvasList.size());
         Canvas canvas = blankCanvasList.get(index);
         CanvasDTO canvasDTO = new CanvasDTO(canvas);

@@ -7,9 +7,9 @@ import com.picolab.util.InvalidParamException;
 public class CanvasDTO {
 
     @Expose
-    int id;
+    private int id;
     @Expose
-    String url;
+    private String url;
 
     public CanvasDTO(){}
 

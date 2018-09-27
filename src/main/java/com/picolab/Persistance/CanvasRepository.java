@@ -12,7 +12,7 @@ public class CanvasRepository {
 
     private static List<Canvas> canvasList = new ArrayList<>();
 
-    CanvasRepository(){}
+    public CanvasRepository(){}
 
     public void save(Canvas canvas) throws InvalidParamException {
         if (canvas == null || canvasExistById(canvas.getId()))
