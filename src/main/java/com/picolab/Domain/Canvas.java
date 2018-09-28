@@ -6,7 +6,6 @@ public class Canvas {
 
     private Integer id;
     private String url;
-    private static int COUNTER = 1;
 
     public Canvas(){}
 
@@ -15,8 +14,6 @@ public class Canvas {
             throw new InvalidParamException();
 
         this.url = url;
-        this.id = COUNTER;
-        ++COUNTER;
     }
 
     public Integer getId() {
