@@ -22,10 +22,12 @@ public class CanvasController {
     @Autowired
     BlankCanvasRepository blankCanvasRepository;
 
-    public void createPlaceHolder() throws InvalidParamException {
+    public void createPlaceHolder(String url) throws InvalidParamException {
         for (int i = 1; i < 51; i++) {
-            String url = ("https://myappoesyes.000webhostapp.com/imagen1/" + i + ".jpg");
-            Canvas canvas = new Canvas(url);
+            String url1 = (url + i + ".jpg");
+            Canvas canvas = new Canvas(url1);
+            canvasRepository.getAllCanvas().clear();
+            blankCanvasRepository.getAllCanvas().clear();
             canvasRepository.save(canvas);
             blankCanvasRepository.save(canvas);
         }
