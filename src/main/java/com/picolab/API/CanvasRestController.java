@@ -25,9 +25,13 @@ public class CanvasRestController {
     }
 
     @PostMapping(value = "/canvas", produces = "application/json;charset=UTF-8")
-    public void generatePlaceHolder() throws InvalidParamException {
+    public void generatePlaceHolder(@RequestBody String jUrl) throws InvalidParamException {
 
-        canvasController.createPlaceHolder();
+        CanvasDTO canvasUrl = new Gson().fromJson(jUrl, CanvasDTO.class);
+
+        String url = canvasUrl.getUrl();
+
+        canvasController.createPlaceHolder(url);
     }
 
     @GetMapping(value = "/canvas", produces = "application/json;charset=UTF-8")
