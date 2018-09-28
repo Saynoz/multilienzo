@@ -22,12 +22,11 @@ public class CanvasController {
     @Autowired
     BlankCanvasRepository blankCanvasRepository;
 
-    public void createPlaceHolder(String url) throws InvalidParamException {
+    public void createPlaceHolder(String url) throws InvalidParamException{
+        clearCanvas();
         for (int i = 1; i < 51; i++) {
             String url1 = (url + i + ".jpg");
             Canvas canvas = new Canvas(url1);
-            canvasRepository.getAllCanvas().clear();
-            blankCanvasRepository.getAllCanvas().clear();
             canvasRepository.save(canvas);
             blankCanvasRepository.save(canvas);
         }
@@ -59,5 +58,10 @@ public class CanvasController {
         Canvas canvas = canvasRepository.getCanvasById(canvasToUpdate.getId());
         canvas.setUrl(canvasToUpdate.getUrl());
         return new CanvasDTO(canvas);
+    }
+
+    public void clearCanvas(){
+        canvasRepository.getAllCanvas().clear();
+        blankCanvasRepository.getAllCanvas().clear();
     }
 }
