@@ -24,9 +24,9 @@ public class CanvasController {
 
     private static int COUNTER = 1;
 
-    public void createPlaceHolder(String url) throws InvalidParamException{
+    public void createPlaceHolder(String url, int canvasSize) throws InvalidParamException{
         clearCanvas();
-        for (int i = 1; i < 51; i++) {
+        for (int i = 1; i < canvasSize; i++) {
             String url1 = (url + i + ".jpg");
             Canvas canvas = new Canvas(url1);
             canvas.setId(COUNTER);
@@ -57,7 +57,7 @@ public class CanvasController {
     }
 
     public synchronized CanvasDTO updateCanvas(CanvasDTO canvasToUpdate) throws InvalidParamException {
-        if (canvasToUpdate == null || canvasToUpdate.getUrl().equals(""))
+        if (canvasToUpdate == null || canvasToUpdate.getUrl() == null || canvasToUpdate.getUrl().equals(""))
             throw new InvalidParamException();
         Canvas canvas = canvasRepository.getCanvasById(canvasToUpdate.getId());
         canvas.setUrl(canvasToUpdate.getUrl());

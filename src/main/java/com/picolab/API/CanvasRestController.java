@@ -31,7 +31,9 @@ public class CanvasRestController {
 
         String url = canvasUrl.getUrl();
 
-        canvasController.createPlaceHolder(url);
+        int canvasSize = canvasUrl.getId();
+
+        canvasController.createPlaceHolder(url, canvasSize);
     }
 
     @GetMapping(value = "/canvas", produces = "application/json;charset=UTF-8")
